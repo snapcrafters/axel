@@ -1,15 +1,43 @@
-name: my-snap-name # you probably want to 'snapcraft register <name>'
-version: '0.1' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Single-line elevator pitch for your amazing snap # 79 char long summary
+name: axel
+version: 'latest'
+version-script: cat $SNAPCRAFT_STAGE/VERSION | cut -d ' ' -f1
+summary: Light command line download accelerator
 description: |
-  This is my-snap's description. You have a paragraph or two to tell the
-  most important story about your snap. Keep it under 100 words though,
-  we live in tweetspace and your description wants to look good in the snap
-  store.
-
-confinement: devmode # use 'strict' once you have the right plugs and slots
+  Light command line download accelerator
+grade: devel
+confinement: strict
 
 parts:
-  my-part:
-    # See 'snapcraft plugins'
+  axel:
     plugin: nil
+    override-build: |
+      snapcraftctl build
+      URL=$(curl https://api.github.com/repos/axel-download-accelerator/axel/releases/latest -s | jq .zipball_url -r)
+      wget $URL -O release.zip
+      unzip release.zip -d release
+      cd release/*
+      autoreconf -fiv
+      ./configure --prefix=$PWD/build_dir; make; make install build_dir
+      mv build_dir/* ${SNAPCRAFT_PART_INSTALL}
+      mv VERSION $SNAPCRAFT_STAGE/
+      cd ../../
+      rm -r release.zip release
+    build-packages:
+      - curl
+      - jq
+      - wget
+      - unzip
+      - autoconf
+      - pkg-config
+      - gettext
+      - autopoint
+      - libssl-dev
+    stage-packages:
+      - libssl1.1
+
+apps:
+  axel:
+    command: bin/axel
+    plugs:
+      - network
+      - home
