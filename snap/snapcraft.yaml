@@ -4,7 +4,7 @@ version-script: cat $SNAPCRAFT_STAGE/VERSION | cut -d ' ' -f1
 summary: Light command line download accelerator
 description: |
   Light command line download accelerator
-grade: devel
+grade: stable
 confinement: strict
 
 parts:
