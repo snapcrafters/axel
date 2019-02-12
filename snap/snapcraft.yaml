@@ -28,6 +28,7 @@ parts:
       - wget
       - unzip
       - autoconf
+      - automake
       - pkg-config
       - gettext
       - autopoint
