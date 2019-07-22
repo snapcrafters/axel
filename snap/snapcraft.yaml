@@ -11,8 +11,7 @@ base: core18
 parts:
   axel:
     plugin: nil
-    override-build: |
-      snapcraftctl build
+    override-pull: |
       URL=$(curl https://api.github.com/repos/axel-download-accelerator/axel/releases/latest -s | jq .zipball_url -r)
       wget $URL -O release.zip
       unzip release.zip -d release
@@ -33,6 +32,7 @@ parts:
       - automake
       - pkg-config
       - gettext
+      - txt2man
       - autopoint
       - libssl-dev
     stage-packages:
