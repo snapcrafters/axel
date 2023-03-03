@@ -12,10 +12,10 @@ description: |
 donation: |
   https://github.com/sponsors/ismaell
   https://liberapay.com/ismael/donate
-issues: https://github.com/axel-download-accelerator/axel/issues
+issues: https://github.com/snapcrafters/axel/issues
 license: GPL-2.0
-source-code: https://github.com/snapcrafters/axel
-website: https://snapcraft.io/publisher/snapcrafters
+source-code: https://github.com/axel-download-accelerator/axel/
+website: https://github.com/axel-download-accelerator/axel/
 grade: stable
 confinement: strict
 base: core18
