@@ -1,9 +1,26 @@
 name: axel
 version: 'latest'
 version-script: cat $SNAPCRAFT_STAGE/VERSION | cut -d ' ' -f1
-summary: Light command line download accelerator
+summary: Lightweight CLI download accelerator
+title: Axel
 description: |
-  Light command line download accelerator
+  Axel is a command-line tool to download files, supporting some interesting features:
+
+  - Usage of multiple connections per file, possibly speeding up the download proccess and also balancing the load between different servers;
+  - Very lightweight, which can be useful specially on byte-critical systems;
+  - Supports the HTTP, HTTPS, FTP and FTPS protocols.
+  
+  The creation of such tool was only possible thanks to the original developer of Axel, Wilmer van der Gaast, and every contributer to the project who worked over the years.
+     
+   **Authors**
+
+  This snap is maintained by the Snapcrafters community, and is not necessarily endorsed or officially maintained by the upstream developers.
+donation: https://liberapay.com/ismael/donate
+issues: https://github.com/snapcrafters/axel/issues
+license: GPL-2.0
+source-code: https://github.com/axel-download-accelerator/axel/
+website: https://github.com/axel-download-accelerator/axel/
+
 grade: stable
 confinement: strict
 base: core18
