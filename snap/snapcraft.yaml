@@ -1,6 +1,5 @@
 name: axel
-version: 'latest'
-version-script: cat $SNAPCRAFT_STAGE/VERSION | cut -d ' ' -f1
+version: '2.17.11'
 summary: Lightweight CLI download accelerator
 title: Axel
 description: |
@@ -9,9 +8,9 @@ description: |
   - Usage of multiple connections per file, possibly speeding up the download proccess and also balancing the load between different servers;
   - Very lightweight, which can be useful specially on byte-critical systems;
   - Supports the HTTP, HTTPS, FTP and FTPS protocols.
-  
+
   The creation of such tool was only possible thanks to the original developer of Axel, Wilmer van der Gaast, and every contributer to the project who worked over the years.
-     
+
    **Authors**
 
   This snap is maintained by the Snapcrafters community, and is not necessarily endorsed or officially maintained by the upstream developers.
@@ -27,23 +26,9 @@ base: core18
 
 parts:
   axel:
-    plugin: nil
-    override-pull: |
-      URL=$(curl https://api.github.com/repos/axel-download-accelerator/axel/releases/latest -s | jq .zipball_url -r)
-      wget $URL -O release.zip
-      unzip release.zip -d release
-      cd release/*
-      autoreconf -fiv
-      ./configure --prefix=$PWD/build_dir; make; make install build_dir
-      mv build_dir/* ${SNAPCRAFT_PART_INSTALL}
-      mv VERSION $SNAPCRAFT_STAGE/
-      cd ../../
-      rm -r release.zip release
+    source: https://github.com/axel-download-accelerator/axel.git
+    plugin: autotools
     build-packages:
-      - curl
-      - jq
-      - wget
-      - unzip
       - autoconf
       - autoconf-archive
       - automake
