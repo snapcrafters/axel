@@ -22,7 +22,7 @@ website: https://github.com/axel-download-accelerator/axel/
 
 grade: stable
 confinement: strict
-base: core18
+base: core22
 
 parts:
   axel:
