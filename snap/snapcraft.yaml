@@ -28,6 +28,8 @@ parts:
   axel:
     source: https://github.com/axel-download-accelerator/axel.git
     plugin: autotools
+    autotools-configure-parameters:
+      - --prefix=/usr
     build-packages:
       - autoconf
       - autoconf-archive
@@ -42,7 +44,7 @@ parts:
 
 apps:
   axel:
-    command: bin/axel
+    command: usr/bin/axel
     plugs:
       - network
       - home
