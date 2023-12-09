@@ -1,5 +1,5 @@
 name: axel
-version: '2.17.11'
+adopt-info: axel
 summary: Lightweight CLI download accelerator
 title: Axel
 description: |
@@ -27,9 +27,13 @@ base: core22
 parts:
   axel:
     source: https://github.com/axel-download-accelerator/axel.git
+    source-tag: 'v2.17.11'
     plugin: autotools
     autotools-configure-parameters:
       - --prefix=/usr
+    override-pull: |
+      craftctl default
+      craftctl set version=$(git describe --tags --abbrev=0 | cut -c 2-)
     build-packages:
       - autoconf
       - autoconf-archive
