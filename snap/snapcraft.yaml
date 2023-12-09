@@ -22,12 +22,14 @@ website: https://github.com/axel-download-accelerator/axel/
 
 grade: stable
 confinement: strict
-base: core18
+base: core22
 
 parts:
   axel:
     source: https://github.com/axel-download-accelerator/axel.git
     plugin: autotools
+    autotools-configure-parameters:
+      - --prefix=/usr
     build-packages:
       - autoconf
       - autoconf-archive
@@ -38,11 +40,11 @@ parts:
       - autopoint
       - libssl-dev
     stage-packages:
-      - libssl1.0.0
+      - libssl3
 
 apps:
   axel:
-    command: bin/axel
+    command: usr/bin/axel
     plugs:
       - network
       - home
