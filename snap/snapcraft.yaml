@@ -1,6 +1,6 @@
 name: axel
 adopt-info: axel
-version: '2.17.11'
+version: "2.17.11"
 summary: Lightweight CLI download accelerator
 title: Axel
 description: |
