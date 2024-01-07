@@ -35,7 +35,7 @@ architectures:
 parts:
   axel:
     source: https://github.com/axel-download-accelerator/axel.git
-    source-tag: 'v${SNAPCRAFT_PROJECT_VERSION}'
+    source-tag: "v${SNAPCRAFT_PROJECT_VERSION}"
     plugin: autotools
     autotools-configure-parameters:
       - --prefix=/usr
