@@ -22,5 +22,5 @@ jobs:
         with:
           token: ${{ secrets.SNAPCRAFTERS_BOT_COMMIT }}
           update-script: |
-            version="$(git ls-remote --refs --sort='v:refname' --tags https://github.com/axel-download-accelerator/axel.git | tail --lines=1 | cut --delimiter='/' --fields=3)"
-            sed -i 's/^\(source-tag: \).*$/\1'"\"$version\""'/' snap/snapcraft.yaml
+            version="$(git ls-remote --refs --sort='v:refname' --tags https://github.com/axel-download-accelerator/axel.git | tail --lines=1 | cut --delimiter='/' --fields=3 | cut -c 2-)"
+            sed -i 's/^\(version: \).*$/\1'"\"$version\""'/' snap/snapcraft.yaml
